@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+.ruff_cache/
+*.py[cod]
+*.sqlite3
+.env
+.env.*
+!.env.example
+credentials.*
+*.key
+*.pem
+dist/

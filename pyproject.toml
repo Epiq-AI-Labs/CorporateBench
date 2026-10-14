@@ -1,0 +1,50 @@
+[project]
+name = "corporatebench"
+version = "0.1.0"
+description = "Minimal runner for the released CorporateBench benchmark"
+readme = "README.md"
+requires-python = ">=3.11,<4"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+dependencies = [
+    "duckdb==1.5.5",
+    "filelock>=3.20,<4",
+    "huggingface-hub>=1,<2",
+    "numpy>=2,<3",
+    "pyoxigraph>=0.4.11,<0.5",
+    "rapidfuzz>=3.14,<4",
+    "scikit-learn>=1.6,<2",
+    "scipy>=1.14,<2",
+    "sentence-transformers>=5.7,<6",
+]
+
+[project.optional-dependencies]
+openai = ["openai>=2,<3"]
+anthropic = ["anthropic>=0.75,<1"]
+
+[project.urls]
+Repository = "https://github.com/Epiq-AI-Labs/CorporateBench"
+Dataset = "https://huggingface.co/datasets/epiq-ai-labs/corporatebench"
+Paper = "https://arxiv.org/abs/2608.27391"
+Viewer = "https://corporatebench.epiqai.com/"
+
+[dependency-groups]
+dev = [
+    "ruff>=0.14,<1",
+]
+
+[build-system]
+requires = ["uv_build>=0.8,<0.9"]
+build-backend = "uv_build"
+
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.per-file-ignores]
+"src/corporatebench/prompts.py" = ["E501"]
+"src/corporatebench/extraction_prompt.py" = ["E501"]
+"src/corporatebench/tasks/topic_classification.py" = ["E501"]
